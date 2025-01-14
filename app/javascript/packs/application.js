@@ -13,7 +13,11 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application" 
 import '@fortawesome/fontawesome-free/js/all'
+import 'bootstrap-tagsinput';
 
+$(document).ready(function() {
+  $("input[data-role='tagsinput']").tagsinput();
+});
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

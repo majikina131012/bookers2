@@ -28,6 +28,10 @@
     <%= f.text_field :title %>
     <h4>Opinion</h4>
     <%= f.text_area :body %>
+    <div class="form-group form-group_tags">
+      <%= f.label :tag_list, "Tag", class: "form-label" %>
+      <%= f.text_field :tag_list, value: Book.new.tag_list.join(","), class: "form-control", data: { role: "tagsinput" } %>
+    </div>
     <%= f.submit 'Create Book', class:"btn btn-primary" %>
   <% end %>
 </div>

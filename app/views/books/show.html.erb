@@ -12,35 +12,29 @@
         <th></th>
         <th>Favorite</th>
         <th>Comment</th>
+        <th>Tags</th>
       </tr>
-      
       <tr>
         <td><%= link_to user_path(@book.user.id) do %>
               <%= @book.user.name %>
             <% end %>  
         </td>
-        
         <td><%= link_to user_path(@book.user.id) do %>
               <%= image_tag @book.user.get_profile_image(100,100) %>
             <% end %>
         </td>
-        
         <td><%= link_to book_path(@book.id) do %>
               <%= @book.title %></td>
             <% end %>
-            
         <td><%= @book.body %></td>
-        
         <td><% if @book.user == current_user %>
               <%= link_to "Edit", edit_book_path(@book.id) %>
             <% end %>
         </td>
-        
         <td><% if @book.user == current_user %>
               <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?" %>
             <% end %>
         </td>
-        
         <td>
         <% if @book.favorited_by?(current_user) %>  
             <%= link_to book_favorites_path(@book.id), method: :delete do %>
@@ -54,9 +48,17 @@
             <% end %>
           <% end %>
         </td>
-        
         <td>
           <%= @book.book_comments.count %>
+        </td>
+        <td>
+          <% if @tags.present? %>
+            <% @tags.each do |tag| %>
+              <%= link_to "#{tag.name}(#{tag.taggings_count})", books_path(tag: tag.name) %>
+            <% end %>
+          <% else %>
+            <p>登録されているタグはありません</p>
+          <% end %>
         </td>
       </tr>
     </table>
