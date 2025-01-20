@@ -21,4 +21,7 @@ class Book < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+  def self.ransackable_attributes(auth_object = nil)
+    %w[title] # 検索可能にしたい属性のみを列挙
+  end
 end

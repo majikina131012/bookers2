@@ -46,8 +46,12 @@ class BooksController < ApplicationController
   def destroy
      @book = Book.find(params[:id])
      @book.destroy
-     
      redirect_to books_path
+  end
+
+  def search
+    @q = Book.ransack(params[:q])
+    @books = @q.result(distinct: true)
   end
   
   private

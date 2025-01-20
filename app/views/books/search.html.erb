@@ -1,0 +1,19 @@
+<h2>検索結果</h2>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+  <% @books.each do |book|%>
+  <tbody>
+    <tr>
+      <td><%= book.user.get_profile_image(100,100) %></td>
+      <td><%= book.title %></td>
+      <td><%= book.body %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
