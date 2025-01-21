@@ -49,10 +49,10 @@ class BooksController < ApplicationController
      redirect_to books_path
   end
 
-  def search
-    @q = Book.ransack(params[:q])
-    @books = @q.result(distinct: true)
-  end
+  # def search
+  #   @q = Book.ransack(params[:q])
+  #   @books = @q.result(distinct: true)
+  # end
   
   private
 

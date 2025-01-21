@@ -12,9 +12,15 @@ class ApplicationController < ActionController::Base
   end
 
   def search
-    @q = Book.ransack(params[:q])
-    @books = @q.result(distinct: true)
+    @q = params[:q]
+    @books = Book.ransack(title_or_body_cont: @q).result
+    @users = User.ransack(name_cont: @q).result
   end
+
+  # def search
+  #   @q = Book.ransack(params[:q])
+  #   @books = @q.result(distinct: true)
+  # end
 
   protected
 

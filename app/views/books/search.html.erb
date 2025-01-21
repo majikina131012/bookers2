@@ -1,19 +1,49 @@
 <h2>検索結果</h2>
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Body</th>
-    </tr>
-  </thead>
-  <% @books.each do |book|%>
-  <tbody>
-    <tr>
-      <td><%= book.user.get_profile_image(100,100) %></td>
-      <td><%= book.title %></td>
-      <td><%= book.body %></td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
+<% if @users.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Title</th>
+        <th>Body</th>
+      </tr>
+    </thead>
+    <% @users.each do |user|%>
+      <% user_books = user.books %>
+      <% user_books.each do |user_book| %>
+      <tbody>
+        <tr>
+          <td>
+            <%= image_tag user.get_profile_image(100,1000) %><br>
+            <%= user.name %>
+          </td>
+          <td><%= user_book.title %></td>
+          <td><%= user_book.body %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    <% end %>
+  </table>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Title</th>
+        <th>Body</th>
+      </tr>
+    </thead>
+    <% @books.each do |book|%>
+    <tbody>
+      <tr>
+        <td>
+          <%= image_tag book.user.get_profile_image(100,1000) %><br>
+          <%= book.user.name %>
+        </td>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+<% end %>
