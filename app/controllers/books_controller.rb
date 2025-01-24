@@ -4,6 +4,7 @@ class BooksController < ApplicationController
     @book = Book.new
     @users = User.all
     @user = current_user
+    @boards = Book.order(created_at: :desc).limit(4)
   end
   
   def create

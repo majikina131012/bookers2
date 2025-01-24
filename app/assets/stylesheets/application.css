@@ -16,3 +16,9 @@
  .1 {
    display: flex;
  }
+
+  .slider img {
+  width: 100%;
+  height: 25vw;
+  object-fit: cover;
+}

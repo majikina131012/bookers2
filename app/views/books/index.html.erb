@@ -57,6 +57,11 @@
           </tr>
           <% end %>
         </table>
+        <div class="slider" aria-hidden="true">
+          <% @boards.each do |board| %>
+            <p><%= image_tag board.user.get_profile_image(200,200), class: 'slider-item rounded' %></p>
+          <% end %>
+        </div>
       </div>
   </div>
 </div>
