@@ -3,13 +3,23 @@
   <p><%= image_tag user.get_profile_image(100,100) %></p>
   <table class="table">
       <tr>
-        <th>name</th>
+        <th>名前</th>
         <td><%=user.name %></td>
       </tr>
       <tr>
-        <th>introduction</th>
+        <th>プロフ</th>
         <td><%=user.introduction %></td>
       </tr>
+      <% if user == current_user %>
+        <tr>
+          <th>メアド</th>
+          <td><%=user.email %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%=user.join_address %></td>
+        </tr>
+    <% end %>
   </table>
   <% if user.id == current_user.id %>
       <p><%= link_to  edit_user_path(user), class:"btn btn-outline-secondary btn-block" do %>

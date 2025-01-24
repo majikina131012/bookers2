@@ -13,20 +13,42 @@
         <% end %>
         <%= form_with model: @user do |f| %>
         <div class="form-group">
-          <label for="inputName">Name</label>
+          <label for="inputName">名前</label>
           <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"Name"%>
         </div>
-        
         <div class="form-group">
-          <label for="inputImage">ProfileImage</label>
+          <label for="inputImage">ユーザー画像</label>
           <%= f.file_field :profile_image, placeholder: "Image", accept: "image/*" %>
         </div>
-        
         <div class="form-group">
-          <label for="inputIntroduction">Introduction</label>
+          <label for="inputIntroduction">紹介文</label>
           <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction", placeholder:"introduction"%>
         </div>
-        <%= f.submit "Update User" %>
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: "email" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :postcode, '郵便番号' %>
+          <%= f.text_field :postcode, autocomplete: 'postcode', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :prefecture_name, '都道府県' %>
+          <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { include_blank: '選択してください', selected: current_user.prefecture_code}, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :address_city, '市区町村' %>
+          <%= f.text_field :address_city, autocomplete: 'address_city', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :address_street, '番地' %>
+          <%= f.text_field :address_street, autocomplete: 'address_street', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :address_building, '建物' %>
+          <%= f.text_field :address_building, autocomplete: 'address_building', class: 'form-control' %>
+        </div>
+        <%= f.submit "Update User", class:'btn btn-primary' %>
         <% end %>
       </div>
     </div>

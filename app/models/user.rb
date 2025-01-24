@@ -9,10 +9,10 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
-  
   validates :name,length: { minimum: 2, maximum: 20 }, uniqueness: true
-    
   validates :introduction,length: { maximum: 50 }
+  include JpPrefecture
+  jp_prefecture :prefecture_code
   
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -21,5 +21,16 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
+
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
   
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+  def join_address
+    "#{self.prefecture_name}#{self.address_city}#{self.address_street}#{self.address_building}"
+  end
 end
