@@ -13,6 +13,8 @@ class User < ApplicationRecord
   validates :introduction,length: { maximum: 50 }
   include JpPrefecture
   jp_prefecture :prefecture_code
+  geocoded_by :address_city
+  after_validation :geocode, if: :address_city_changed?
   
   def get_profile_image(width, height)
     unless profile_image.attached?

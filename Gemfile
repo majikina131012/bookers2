@@ -56,3 +56,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'net-smtp'
 gem 'devise'
 gem 'jp_prefecture'
+gem 'dotenv-rails'
+gem 'geocoder'
