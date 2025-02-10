@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :introduction,length: { maximum: 50 }
   include JpPrefecture
   jp_prefecture :prefecture_code
-  geocoded_by :address_city
+  geocoded_by :join_address
   after_validation :geocode, if: :address_city_changed?
   
   def get_profile_image(width, height)
@@ -32,7 +32,11 @@ class User < ApplicationRecord
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  # def join_address
+  #   "#{self.prefecture_name}#{self.address_city}#{self.address_street}#{self.address_building}"
+  # end
+  
   def join_address
-    "#{self.prefecture_name}#{self.address_city}#{self.address_street}#{self.address_building}"
+    [prefecture_name, address_city, address_street, address_building].compact.join(" ")
   end
 end

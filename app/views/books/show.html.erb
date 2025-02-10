@@ -31,9 +31,10 @@
             
         <td><%= @book.body %></td>
         
-        <td><% if @book.user == current_user %>
-              <%= link_to "Edit", edit_book_path(@book.id) %>
-            <% end %>
+        <td>
+          <% if @book.user == current_user %>
+            <%= link_to "Edit", edit_book_path(@book.id) %>
+          <% end %>
         </td>
         
         <td><% if @book.user == current_user %>
