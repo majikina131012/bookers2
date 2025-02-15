@@ -54,10 +54,7 @@
                   zoom: 15,
                   center: test
                   });
-        var transitLayer = new google.maps.TransitLayer();
-        transitLayer.setMap(map);
-
-        var contentString = '住所：<%= @user.address_city %>';
+        var contentString = '住所：<%= @user.join_address %>';
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
@@ -66,7 +63,6 @@
                       map: map,
                       title: contentString
                     });
-
         marker.addListener('click', function() {
           infowindow.open(map, marker);
         });
@@ -76,7 +72,7 @@
                   src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['Maps_API_Key'] %>&callback=initMap">
     </script>
     <style type="text/css">
-      #map { height: 200px;
+      #map { height: 400px;
             width: 70%;}
     </style>
   </div>
