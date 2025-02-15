@@ -26,6 +26,7 @@
           <label for="inputIntroduction">Introduction</label>
           <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction", placeholder:"introduction"%>
         </div>
+        <%= link_to "パスワード変更", edit_user_password_path %>
         <%= f.submit "Update User" %>
         <% end %>
       </div>
