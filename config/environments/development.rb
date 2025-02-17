@@ -1,7 +1,11 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+<<<<<<< HEAD
   # Settings specified here will take precedence over those in config/application.rb.
+=======
+    # Settings specified here will take precedence over those in config/application.rb.
+>>>>>>> 1f9c132 (パスワード変更機能実装完了)
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
@@ -75,7 +79,8 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.active_job.queue_adapter = :inline
   host = 'localhost:3000'
-  config.action_mailer.default_url_options = { protocol: 'https', host: host }
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+>>>>>>> 1f9c132 (パスワード変更機能実装完了)
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
