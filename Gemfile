@@ -55,5 +55,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'net-smtp'
 gem 'devise'
+gem 'dotenv-rails'
 gem 'rails-i18n'
 gem 'devise-i18n'
