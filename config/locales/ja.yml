@@ -1,0 +1,23 @@
+ja:
+  hello: "こんにちは"
+  change_language: "English"
+  nav:
+    Home: "ホーム"
+    Users: "ユーザー一覧"
+    Books: "投稿一覧"
+    Logout: "ログアウト"
+    About: "このサイトについて"
+    Sign In: "新規登録"
+    Log In: "ログイン"
+  book:
+    New Book: "新規投稿"
+    Title: "タイトル"
+    Opinion: "本文"
+    Create Book: "投稿する"
+  user:
+    User Info: "ユーザー情報"
+    Name: "名前"
+    Introduction: "自己紹介文"
+  helpers:
+    submit:
+      Create Book: "投稿する"

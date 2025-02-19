@@ -1,33 +1,35 @@
 <div class="col-md-3">
-  <h2>User info</h2>
+  <h2><%= t('user.User Info') %></h2>
   <p><%= image_tag user.get_profile_image(100,100) %></p>
   <table class="table">
       <tr>
-        <th>name</th>
+        <th><%= t('user.Name') %></th>
         <td><%=user.name %></td>
       </tr>
       <tr>
-        <th>introduction</th>
+        <th><%= t('user.Introduction') %></th>
         <td><%=user.introduction %></td>
       </tr>
   </table>
   <% if user.id == current_user.id %>
-      <p><%= link_to  edit_user_path(user), class:"btn btn-outline-secondary btn-block" do %>
-            <i class="fas fa-user-cog"></i>
-          <% end %>
+      <p>
+        <%= link_to  edit_user_path(user), class:"btn btn-outline-secondary btn-block" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
       </p>
   <% else %>
-      <p><%= link_to edit_user_path(user.id) do %>
-            <i class="fas fa-user-cog"></i>
-          <% end %>  
+      <p>
+        <%= link_to edit_user_path(user.id) do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>  
       </p>
   <% end %>
-  <h2 class="mt-3">New book</h2>
+  <h2 class="mt-3"><%= t('book.New Book') %></h2>
   <%= form_with model: Book.new do |f| %>
-    <h4>Title</h4>
+    <h4><%= t('book.Title') %></h4>
     <%= f.text_field :title %>
-    <h4>Opinion</h4>
+    <h4><%= t('book.Opinion') %></h4>
     <%= f.text_area :body %>
-    <%= f.submit 'Create Book', class:"btn btn-primary" %>
+    <%= f.submit t('book.Create Book'), class:"btn btn-primary" %>
   <% end %>
 </div>

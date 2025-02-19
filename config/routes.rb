@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get '/top' => 'homes#top'
   get 'home/about' => 'home#about', as: 'about'
+  get "change_locale/:locale", to: "application#change_locale", as: :change_locale
   # get 'homes/about' => 'homes#about', as: 'about'
   devise_for :users
   # controllers: {

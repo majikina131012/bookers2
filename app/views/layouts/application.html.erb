@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
- <body>
+<body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
@@ -23,43 +23,43 @@
           <% if user_signed_in? %>
             <li>
               <%= link_to user_path(current_user), class:"nav-link text-light" do %>
-                <i class="fas fa-home"></i> Home
+                <i class="fas fa-home"></i> <%= t('nav.Home') %>
               <% end %>
             </li>
             <li>
               <%= link_to users_path, class:"nav-link text-light" do %>
-                <i class="fas fa-users"></i> Users
+                <i class="fas fa-users"></i> <%= t('nav.Users') %>
               <% end %>
             </li>
             <li>
               <%= link_to books_path, class:"nav-link text-light" do %>
-                <i class="fas fa-book-open"></i> Books
+                <i class="fas fa-book-open"></i> <%= t('nav.Books') %>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
-                <i class="fas fa-sign-out-alt"></i> logout
+                <i class="fas fa-sign-out-alt"></i> <%= t('nav.Logout') %>
               <% end %>
             </li>
           <% else %>
             <li>
               <%= link_to root_path, class:"nav-link text-light" do %>
-                <i class="fas fa-home"></i> Home
+                <i class="fas fa-home"></i> <%= t('nav.Home') %>
               <% end %>
             </li>
             <li>
               <%= link_to about_path, class:"nav-link text-light" do %>
-                <i class="fas fa-link"></i> About
+                <i class="fas fa-link"></i> <%= t('nav.About') %>
               <% end %>
             </li>
             <li>
               <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
-                <i class="fas fa-user-plus"></i> sign up
+                <i class="fas fa-user-plus"></i> <%= t('nav.Sign In') %>
               <% end %>
             </li>
             <li>
               <%= link_to new_user_session_path, class:"nav-link text-light" do %>
-                <i class="fas fa-sign-in-alt"></i> login
+                <i class="fas fa-sign-in-alt"></i> <%= t('nav.Log In') %>
               <% end %>
             </li>
           <% end %>
@@ -74,13 +74,15 @@
       <%= yield %>
     </div>
   <main>
- </body>
- <footer>
+</body>
+<footer>
   <div class="container mt-5">
-  	<div class="row">
-    	<div class="mx-auto">
-    		<p>CopyRight Infratop.inc</p>
-    	</div>
+    <div class="row">
+      <div class="mx-auto">
+        <%= link_to t('change_language'), change_locale_path(locale: I18n.locale == :ja ? :en : :ja), class: "btn btn-primary" %>
+        <p>CopyRight Infratop.inc</p>
+        <h1><%= t('hello') %></h1>
+      </div>
     </div>
   </div>
 </footer>
