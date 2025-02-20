@@ -78,9 +78,8 @@
 <footer>
   <div class="container mt-5">
     <div class="row">
-      <div class="mx-auto">
-        <%#= link_to t('change_language'), change_locale_path(locale: I18n.locale == :ja ? :en : :ja), class: "btn btn-primary" %>
-        <select id="language-select" class="form-control">
+      <div class="ml-auto">
+        <select id="language-select" class="form-control text-right">
           <option value="en" <%= 'selected' if I18n.locale == :en %>>English</option>
           <option value="ja" <%= 'selected' if I18n.locale == :ja %>>日本語</option>
         </select>
@@ -90,8 +89,11 @@
             window.location.href = "/change_locale/" + selectedLocale;
           });
         </script>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mx-auto">
         <p>CopyRight Infratop.inc</p>
-        <h1><%= t('hello') %></h1>
       </div>
     </div>
   </div>
