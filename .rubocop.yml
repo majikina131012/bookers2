@@ -1,0 +1,28 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+Capybara/CurrentPathExpectation:
+  Enabled: true
+
+FactoryBot/AttributeDefinedStatically:
+  Enabled: true
+
+FactoryBot/CreateList:
+  Enabled: true
+
+#解析から除外するファイルやフォルダを指定します。
+#ご自身に合わせて加除修正を行ってください。
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'
+    - 'path/ruby'
+    - 'test/**/*'
+    - 'spec/**/*'
+    - 'config/**/*'
