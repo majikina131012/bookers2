@@ -4,6 +4,7 @@ class Book < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   
   validates :title, presence: true
   validates :body, presence: true,
@@ -20,5 +21,9 @@ class Book < ApplicationRecord
   
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  def bookmarked_by?(user)
+    bookmarks.exists?(user_id: user.id)
   end
 end

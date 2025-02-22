@@ -1,0 +1,11 @@
+<% if book.bookmarked_by?(current_user) %>  
+  <%= link_to book_bookmarks_path(book.id), method: :delete do %>
+    <i class="fas fa-bookmark" aria-hidden="true"></i>
+    <%= book.bookmarks.count %>
+  <% end %>
+<% else %>
+  <%= link_to book_bookmarks_path(book.id), method: :post do %>
+    <i class="far fa-bookmark" aria-hidden="true"></i>
+    <%= book.bookmarks.count %>
+  <% end %>
+<% end %>
