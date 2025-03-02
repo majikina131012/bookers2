@@ -10,6 +10,14 @@
         <th>introduction</th>
         <td><%=user.introduction %></td>
       </tr>
+      <tr>
+        <th>Follows</th>
+        <td><%= user.followers.count %></td>
+      </tr>
+      <tr>
+        <th>Followers</th>
+        <td><%= user.followeds.count %></td>
+      </tr>
   </table>
   <% if user.id == current_user.id %>
       <p><%= link_to  edit_user_path(user), class:"btn btn-outline-secondary btn-block" do %>
