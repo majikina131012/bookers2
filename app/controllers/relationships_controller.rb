@@ -13,20 +13,18 @@ class RelationshipsController < ApplicationController
   def destroy
     user = User.find(params[:user_id])
     relationship = Relationship.find_by(followed_id: user.id)
-    relationship.follower_id = current_user.id
     relationship.destroy
     redirect_to request.referer
   end
 
   def followings
-    @user = User.find(paramas[:id])
-    @users = @user.followings
+    @user = User.find(params[:user_id])
+    @users = @user.following_users
   end
 
   def followers
-    @user = User.find(paramas[:id])
-    @users = @user.followings
+    @user = User.find(params[:user_id])
+    @users = @user.follower_users
   end
-
 
 end
