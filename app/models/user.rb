@@ -25,5 +25,9 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
+
+  def is_followed_by?(user)
+    Relationship.find_by(follower_id: user.id).present?
+  end
   
 end
