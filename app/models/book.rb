@@ -5,6 +5,7 @@ class Book < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :reservations
   
   validates :title, presence: true
   validates :body, presence: true,
