@@ -32,14 +32,16 @@
             
         <td><%= @book.body %></td>
         
-        <td><% if @book.user == current_user %>
-              <%= link_to "Edit", edit_book_path(@book.id) %>
-            <% end %>
+        <td>
+          <% if @book.user == current_user %>
+            <%= link_to "Edit", edit_book_path(@book.id) %>
+          <% end %>
         </td>
         
-        <td><% if @book.user == current_user %>
-              <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?" %>
-            <% end %>
+        <td>
+          <% if @book.user == current_user %>
+            <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?" %>
+          <% end %>
         </td>
         
         <td>
@@ -63,6 +65,7 @@
         </td>
       </tr>
     </table>
+    <%= link_to "この本を予約する", book_reservations_path(@book.id) %>
     <div>
       <%= form_with model: [@book, @book_comment] do |f| %>
         <%= f.text_area :comment, rows: '5', placeholder: "comment", class:"w-100" %>

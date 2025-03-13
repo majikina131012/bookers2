@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
   def new
+    @book = Book.find(params[:book_id])
     @reservation = Reservation.new
     @day = params[:day]
     @time = params[:time]
@@ -7,7 +8,12 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    @reservations = Reservation.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
+    @book = Book.find(params[:book_id])
+    # @reservations = Reservation.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
+    @reservations = Reservation.where(book_id: @book.id)
+                           .where("day >= ?", Date.current)
+                           .where("day < ?", Date.current >> 3)
+                           .order(day: :desc)
   end
 
   def show
@@ -15,9 +21,12 @@ class ReservationsController < ApplicationController
   end
   
   def create
+    book = Book.find(params[:book_id])
     @reservation = Reservation.new(reservation_params)
-    if @reservation.save!
-      redirect_to reservation_path @reservation.id
+    @reservation.book_id = book.id
+    @reservation.user_id = current_user.id
+    if @reservation.save
+      redirect_to book_reservations_path(book.id)
     else
       render :new
     end
