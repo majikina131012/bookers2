@@ -26,7 +26,7 @@ class ReservationsController < ApplicationController
     @reservation.book_id = book.id
     @reservation.user_id = current_user.id
     if @reservation.save
-      redirect_to book_reservation_path(book.id,@reservation.id)
+      redirect_to book_reservation_path(book.id,@reservation.id), notice: "予約が完了しました"
     else
       render :new
     end

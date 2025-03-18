@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   get '/top' => 'homes#top'
   get 'home/about' => 'home#about', as: 'about'
-  get '/reservation' => 'reservations#index'
-  # get 'homes/about' => 'homes#about', as: 'about'
+  # get '/reservation' => 'reservations#index'
   devise_for :users
   # controllers: {
   # registrations: 'users/registrations',
@@ -15,7 +14,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
     resource :bookmarks, only: [:create, :destroy]
-    resources :reservations
+    resources :reservations, only: [:new, :create, :index, :show]
   end  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, only: [:show, :edit, :index, :update,] do
