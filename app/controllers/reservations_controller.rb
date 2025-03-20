@@ -9,7 +9,6 @@ class ReservationsController < ApplicationController
 
   def index
     @book = Book.find(params[:book_id])
-    # @reservations = Reservation.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
     @reservations = Reservation.where(book_id: @book.id)
                            .where("day >= ?", Date.current)
                            .where("day < ?", Date.current >> 3)
